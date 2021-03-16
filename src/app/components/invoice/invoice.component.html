@@ -1,0 +1,21 @@
+<div *ngIf = "dataLoaded == false" class="spinner-border text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<table *ngIf = "dataLoaded == true" class="table">
+    <thead>
+        <tr>            
+            <th>Id</th>
+            <th>Kiralama</th>
+            <th>Adres</th>            
+            <th>Fatura Tarihi</th>
+            <th>Toplam Tutar</th>
+        </tr>
+    </thead>
+    <tr *ngFor= "let invoice of invoices">        
+        <td>{{invoice.id}}</td>
+        <td>{{invoice.rentalId}}</td>
+        <td>{{invoice.addressId}}</td>        
+        <td>{{invoice.invoiceDate}}</td>
+        <td>{{invoice.totalPrice}}</td>
+    </tr>
+</table>
