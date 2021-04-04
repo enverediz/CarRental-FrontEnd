@@ -1,9 +1,22 @@
-<ul class = "list-group">
+<select class="form-select" id="validationCustom04" required>
+    <option selected disabled value="">Renkler</option>
+    <option><li  [class] ="getAllColorClass()" routerLink = "/cars">Tum Araclar</li></option>
+    <option *ngFor="let color of colors">        
+        <ul class = "list-group">            
+            <li (click)="setCurrentColor(color)" 
+                routerLink = "/cars/color/{{color.id}}" 
+                [class] ="getCurrentColorClass(color)">{{color.colorName}}</li>                   
+        </ul>
+    </option>
+</select><button type="button" class="btn btn-info">Filtrele</button> 
+
+
+<!--<ul class = "list-group">
     <li  [class] ="getAllColorClass()" routerLink = "/cars">Tum Araclar</li>
     <li (click)="setCurrentColor(color)" *ngFor="let color of colors"
     routerLink = "/cars/color/{{color.id}}" 
     [class] ="getCurrentColorClass(color)">{{color.colorName}}</li>    
-</ul>
+</ul> -->
 
 
 <!-- <div *ngIf = "dataLoaded == false" class="spinner-border text-primary" role="status">

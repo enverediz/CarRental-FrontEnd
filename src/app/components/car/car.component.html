@@ -1,39 +1,29 @@
 <div *ngIf = "dataLoaded == false" class="spinner-border text-primary" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
+
+<div class="mb-3">
+  <label for="filterText" class="form-label">Araba Ara</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Arama ifadesi giriniz">
+</div>
+
+<div *ngIf="filterText" class="alert alert-primary">
+  {{filterText}} aradiniz.
+</div>
+
 <div class="row">
-  <div  *ngFor= "let car of cars" class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+  <div  *ngFor= "let car of cars | filterPipe:filterText" class="card" style="width: 18rem;">
+    <img src="{{car.imagePath}}" class="card-img-top" alt="image">
     <div class="card-body">
       <h5 class="card-title">{{car.carName}}</h5>
       <p class="card-title">{{car.brandName}}</p>
       <p class="card-title">{{car.colorName}}</p>
       <p class="card-title">{{car.dailyPrice}}₺</p>
           
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <div class="row">
+        <div class="col-md-6"><button (click)="goToDetail(car)" class="btn btn-primary">Detay</button></div>
+        <div class="col-md-6"><button (click)="addToRental(car)" class="btn btn-primary">Kirala</button></div>
+      </div>      
     </div>
   </div>
 </div>
-
-
-
-
-<!-- <div *ngIf = "dataLoaded == false" class="spinner-border text-primary" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
-<table *ngIf = "dataLoaded == true" class="table">
-    <thead>
-        <tr>            
-            <th>Araba Adi</th>
-            <th>Marka</th>
-            <th>Renk</th>            
-            <th>Gunluk Fiyat(₺)</th>
-        </tr>
-    </thead>
-    <tr *ngFor= "let car of cars">        
-        <td>{{car.carName}}</td>
-        <td>{{car.brandName}}</td>
-        <td>{{car.colorName}}</td>        
-        <td>{{car.dailyPrice}}</td>
-    </tr>
-</table> -->

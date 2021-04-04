@@ -1,9 +1,21 @@
-<ul class = "list-group">
+<select class="form-select" id="validationCustom04" required>
+    <option selected disabled value="">Markalar</option>
+    <option><li  [class] ="getAllBrandClass()" routerLink = "/cars">Tum Araclar</li></option>
+    <option *ngFor="let brand of brands">
+        <ul class = "list-group">
+            <li (click)="setCurrentBrand(brand)" 
+                routerLink = "/cars/brand/{{brand.id}}" 
+                [class] ="getCurrentBrandClass(brand)">{{brand.brandName}}</li>    
+        </ul>
+    </option>
+</select>
+
+<!--<ul class = "list-group">
     <li [class] ="getAllBrandClass()" routerLink = "/cars">Tum Araclar</li>
     <li (click)="setCurrentBrand(brand)" *ngFor="let brand of brands"
     routerLink = "/cars/brand/{{brand.id}}" 
     [class] ="getCurrentBrandClass(brand)">{{brand.brandName}}</li>    
-</ul>
+</ul> -->
 
 <!-- <div *ngIf = "dataLoaded == false" class="spinner-border text-primary" role="status">
   <span class="visually-hidden">Loading...</span>
